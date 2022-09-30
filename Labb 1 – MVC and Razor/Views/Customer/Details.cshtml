@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Customer>
+
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="text-center">
+            <h2 class="display-5">Details</h2>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+                    <th scope="col">ID</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+
+                        <td>@Html.DisplayFor(modelItem => item.CustomerID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CustomerFirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CustomerLastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CustomerAge)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CustomerGender)</td>
+
+                        <td>
+                            <a asp-action="ActiveLoans" asp-route-id="@item.CustomerID" class="btn btn-outline-info">Current Loans</a>
+                            <a asp-action="LoanHistory" asp-route-id="@item.CustomerID" class="btn btn-outline-info">Loan History</a>
+
+                        </td>
+                    </tr>
+                }
+        </table>
+    </div>
+</div>

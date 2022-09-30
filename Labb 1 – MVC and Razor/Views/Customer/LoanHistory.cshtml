@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Customer>
+
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="text-center">
+            <h2 class="display-5">Details</h2>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Publication year</th>
+                    <th scope="col">Date of loan</th>
+                    <th scope="col">Last date to return</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    @for (int i = 0; i < item.LibraryLoans.Count; i++)
+                    {
+                        <tr>
+                            @if (item.LibraryLoans[i].IsReturned == true)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.LibraryLoans[i].Book.BookTitle)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LibraryLoans[i].Book.BookAuthor)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LibraryLoans[i].Book.BookPublishedYear)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LibraryLoans[i].DateOfLoan)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LibraryLoans[i].LastDateToReturn)</td>
+                            }
+                        </tr>
+                    }
+                }
+        </table>
+    </div>
+</div>
